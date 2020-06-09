@@ -45,6 +45,7 @@ commoditymarket.register_market(market_name, market_def)
 
 minetest.register_chatcommand("market", {
 	description = "Togle market",
+	privs = {interact = true},
     func = function(name, param)
 		local player_name = minetest.get_player_by_name(name)
 		local msg = "Ouverture du market..."
