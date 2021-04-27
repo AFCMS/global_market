@@ -1,0 +1,2 @@
+# How many items each player is able to sell at a time 
+global_market.max_items_limit (Items limit per player) int 200

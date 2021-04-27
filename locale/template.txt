@@ -1,0 +1,5 @@
+# textdomain: global_market
+Market=
+Global Market=
+Togle market=
+Opening of the global market...=

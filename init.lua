@@ -1,34 +1,29 @@
---[[
-Minetest Mod Market - A Mod adding a market (based on commoditymarket)
-]]
+--Add a market command
 
-local market_def = {
-	description = "Market",
-	long_description = "Market",
+local S = minetest.get_translator(minetest.get_current_modname())
+
+commoditymarket.register_market("Market", {
+	description = S("Market"),
+	long_description = S("Global Market"),
 	currency = {
 		["default:gold_ingot"] = 1000,
 		["commoditymarket:gold_coins"] = 1
 	},
 	currency_symbol = "$",
-	inventory_limit = 100000,
-	sell_limit = 100000,
+	inventory_limit = minetest.settings:get("global_market.max_items_limit") or 200,
+	sell_limit = minetest.settings:get("global_market.max_items_limit") or 200,
 	initial_items = {"default:cobble", "default:wood"},
 	allow_item = function(item) return true end,
 	anonymous = false,
-}
-
-local market_name = "Market"
-
-commoditymarket.register_market(market_name, market_def)
+})
 
 minetest.register_chatcommand("market", {
-	description = "Togle market",
+	description = S("Togle market"),
 	privs = {interact = true},
     func = function(name, param)
-		local player_name = minetest.get_player_by_name(name)
-		local msg = "Ouverture du market..."
-		if player_name then
-			minetest.chat_send_player(name, msg)
+		local player = minetest.get_player_by_name(name)
+		if player then
+			minetest.chat_send_player(name, S("Opening of the global market..."))
 			commoditymarket.show_market("Market", name)
 		end
 	end,
