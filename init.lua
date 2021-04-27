@@ -10,8 +10,8 @@ commoditymarket.register_market("Market", {
 		["commoditymarket:gold_coins"] = 1
 	},
 	currency_symbol = "$",
-	inventory_limit = minetest.settings:get("global_market.max_items_limit") or 200,
-	sell_limit = minetest.settings:get("global_market.max_items_limit") or 200,
+	inventory_limit = minetest.settings:get("global_market.max_items_player") or 200,
+	sell_limit = minetest.settings:get("global_market.max_items_player") or 200,
 	initial_items = {"default:cobble", "default:wood"},
 	allow_item = function(item) return true end,
 	anonymous = false,
